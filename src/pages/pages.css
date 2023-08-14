@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+
+
+
+h1,p{
+  font-family: 'Source Code Pro', monospace;
+  font-weight: normal;
+} 
+
+.button-content {
+  padding: 0 10px; /* Adjust the padding as needed */
+}
+
+.corner-button-home{
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border: 2px solid white; /* Adjust the border properties as needed */
+}
+
+
+.corner-button-home:nth-child(1) {
+  top: -5px;
+  left: -5px;
+  border-bottom-width: 0;
+  border-right-width: 0;
+}
+
+.corner-button-home:nth-child(2) {
+  top: -5px;
+  right: -5px;
+  border-bottom-width: 0;
+  border-left-width: 0;
+}
+
+
+.corner-button-home:nth-child(3) {
+  bottom: -4.3px;
+  left: -5px;
+  border-top-width: 0;
+  border-right-width: 0;
+}
+
+.corner-button-home:nth-child(4) {
+  bottom: -4.3px;
+  right: -5px;
+  border-top-width: 0;
+  border-left-width: 0;
+}
+
+
+#power-text {
+  display: block; /* Default display for larger screens */
+}
+
+@media (max-width: 600px) {
+  #power-text {
+    display: none; /* Hide the text for screens smaller than 600px */
+  }
+}
+
+#power-buttons{
+  display: flex;
+}
+
+@media (max-width: 600px) {
+  #power-buttons {
+    display: none; /* Hide the text for screens smaller than 600px */
+  }
+}
+
+.image-modal textarea {
+  font-family: 'Lato', sans-serif;
+
+}

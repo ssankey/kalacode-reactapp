@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+
+.generated-then h2, .generated-then p{
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+} 
+.generated-then{
+    overflow-y : scroll;
+    
+}
+
+.generated-then-button {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .generated-then-button  {
+    display: none; /* Hide the text for screens smaller than 600px */
+  }
+}
+
+/* Add corner borders to the card */
+.corner-border {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border: 2px solid rgb(255, 255, 255); /* Adjust the border properties as needed */
+  }
+  
+  /* Top left corner */
+  .corner-border:nth-child(1) {
+    top: -6px;
+    left: -6px;
+    border-bottom-width: 0;
+    border-right-width: 0;
+  }
+  
+  /* Top right corner */
+  .corner-border:nth-child(2) {
+    top: -6px;
+    right: -6px;
+    border-bottom-width: 0;
+    border-left-width: 0;
+  }
+  
+  /* Bottom left corner */
+  .corner-border:nth-child(3) {
+    bottom: -6px;
+    left: -6px;
+    border-top-width: 0;
+  border-right-width: 0;
+  }
+  
+  /* Bottom right corner */
+  .corner-border:nth-child(4) {
+    bottom: -6px;
+    right: -6px;
+    border-top-width: 0;
+    border-left-width: 0;
+  }
+  
+
+  .corner-border-modal{
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border: 2px solid rgb(255, 255, 255); /* Adjust the border properties as needed */
+  }
+
+
+  .corner-border-modal:nth-child(1) {
+    top: 0px;
+    left: 0px;
+    border-bottom-width: 0;
+    border-right-width: 0;
+  }
+  
+  /* Top right corner */
+  .corner-border-modal:nth-child(2) {
+    top: 0px;
+    right: 0px;
+    border-bottom-width: 0;
+    border-left-width: 0;
+  }
+  
+  /* Bottom left corner */
+  .corner-border-modal:nth-child(3) {
+    bottom: 0px;
+    left: 0px;
+    border-top-width: 0;
+  border-right-width: 0;
+  }
+  
+  /* Bottom right corner */
+  .corner-border-modal:nth-child(4) {
+    bottom: 0px;
+    right: 0px;
+    border-top-width: 0;
+    border-left-width: 0;
+  }

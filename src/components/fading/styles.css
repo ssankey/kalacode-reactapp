@@ -1,0 +1,39 @@
+/* styles.css */
+/* fonts.css or fonts.scss */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('../../assets/font/fonyFamily/Sans/PPFraktionSans-Bold.otf') format('opentype');
+}
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 3500ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 3500ms;
+}
+
+.visible {
+  display: block !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.fading-text p{
+  font-family: 'Lato', sans-serif;
+
+
+}
