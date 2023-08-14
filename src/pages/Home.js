@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import { ReactNebula } from "@flodlc/nebula";
 import logo from '../assets/Group 80.png'
 import { motion } from 'framer-motion';
 import { MdOutlineKeyboardArrowLeft, MdOutlineKeyboardArrowRight } from 'react-icons/md';
 import { Link } from 'react-router-dom';
-import { MdClose } from 'react-icons/md';
 import './pages.css'
 import Generate from '../components/generator/Generator';
 import FadeText from '../components/fading/FadingText';
@@ -30,9 +29,6 @@ const Home = () => {
     return () => clearTimeout(timer);
   };
 
-  const handleMenuClick = () => {
-    setShowMenu(!showMenu);
-  };
 
   const generatedThen = () => {
     setShowGenerateSection(false);
