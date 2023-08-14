@@ -105,7 +105,7 @@ const Home = () => {
         )}
 
       </motion.div>
-      <div className='absolute bottom-7  left-0 w-full'>
+      <div className='absolute bottom-24  left-0 w-full'>
         {showGenerateSection && (
           <div className='text-white flex  flex-col items-center sm:ml-[-25rem]'>
             <motion.div
