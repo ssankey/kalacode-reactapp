@@ -94,7 +94,7 @@ const Generate = ({ imageDescription }) => {
               <h1 className="text-2xl py-5 sm:text-5xl uppercase text-center">
                 Artistic QR Code Generator
               </h1>
-              <p className="sm:mt-3 sm:px-20 opacity-70 text-xs sm:text-sm text-center sm:leading-[2rem] pb-5 px-5 leading-[1.2rem]">
+              <p className="sm:mt-3 sm:px-20 opacity-70 text-sm text-center sm:leading-[2rem] pb-5 px-5 leading-[1.2rem]">
                 This experience leverages ‘Artificial Intelligence’ to generate artistic QR code of your choice.<br />
                 Key in the required information below and hang in there to download!
               </p>
