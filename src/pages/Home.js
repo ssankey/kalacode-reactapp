@@ -71,7 +71,7 @@ const Home = () => {
               <img src={logo} className="sm:w-[8rem] w-[5rem]" alt="logo" />
             </Link>
           </div>
-          <div
+          {/* <div
             className='sm:text-right text-white z-[100] cursor-pointer'
             onClick={handleMenuClick}
           >
@@ -91,7 +91,7 @@ const Home = () => {
             ) : (
               'MENU'
             )}
-          </div>
+          </div> */}
         </div>
       </div>
       <motion.div
@@ -101,9 +101,9 @@ const Home = () => {
         transition={{ duration: 0.5 }}
       >
         {(!showTextSequence && !showGeneratedThen && !generateForm) && (
-          <div className="conditional-paragraph px-4">
-            <p className='sm:mx-auto sm:text-center pl-5 relative text-[2.2rem] sm:text-sm sm:top-[-2rem] text-white'>
-              POWER AT<br className='sm:hidden' /> <span className='sm:pl-0 py-[-10rem] pl-20'>YOUR </span> <span className='sm:pl-0 pl-24 '>FINGERTIPS</span>
+          <div className="conditional-paragraph mt-6 px-4">
+            <p className='sm:mx-auto sm:text-center pl-5 relative text-[2.2rem] sm:text-sm sm:top-[-4rem] text-white'>
+              POWER AT<br className='sm:hidden' /> <span className='sm:pl-0  py-[-10rem] pl-20'>YOUR </span> <span className='sm:pl-0 pl-24 '>FINGERTIPS</span>
             </p>
           </div>
         )}
@@ -111,14 +111,14 @@ const Home = () => {
       </motion.div>
       <div className='absolute bottom-0 left-0 w-full'>
         {showGenerateSection && (
-          <div className='text-white flex flex-col items-center sm:ml-[-25rem]'>
+          <div className='text-white flex  flex-col items-center sm:ml-[-25rem]'>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
               exit={{ opacity: 0, y: -20 }}
             >
-              <div className='w-full sm:w-2/3 px-5 sm:px-0 mb-10 text-center sm:flex gap-10 sm:text-start mx-auto'>
+              <div className='w-full sm:w-2/3 px-5  sm:px-0 mb-10 text-center sm:flex gap-10 z-50 sm:text-start mx-auto'>
                 <div className="flex items-center justify-center sm:justify-start sm:mb-5">
                   <p className="font-bold text-white/90 mb-10">Welcome</p>
                   <div className="w-2 h-2 bg-white rounded-full mt-[-2.2rem] ml-5"></div>
@@ -131,7 +131,7 @@ const Home = () => {
                 </p>
               </div>
             </motion.div>
-            <div className='sm:my-10 pb-10 mb-10 sm:mr-[8rem] flex flex-col sm:flex-row justify-center items-center z-20 gap-3'>
+            <div className='sm:my-10  mb-10 sm:mr-[6rem] flex flex-col sm:flex-row justify-center items-center z-20 gap-3'>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -145,8 +145,8 @@ const Home = () => {
                   <div className="corner-button-home"></div>
                   <div className="corner-button-home"></div>
                   <div className="corner-button-home"></div>
-                  <span className="button-content transition-colors ">GENERATE NOW</span>
-                  <div className='absolute top-0 left-[11.5rem] py-4  duration-500 w-12 h-full group-hover:bg-[#b6401e] text-white flex justify-center items-center '><MdOutlineKeyboardArrowRight /></div>
+                  <span className="button-content transition-colors  ">GENERATE NOW</span>
+                  <div className='absolute top-0 left-[11.5rem] py-4  duration-500 w-12 h-full group-hover:bg-[#b6401e]/40 text-white flex justify-center items-center '><MdOutlineKeyboardArrowRight /></div>
                 </button>
 
 
@@ -185,17 +185,17 @@ const Home = () => {
           </div>
         </motion.div>
       )}
-      {showMenu && (
+      {/* {showMenu && (
         <div className="absolute sm:fixed inset-0 flex items-center justify-center z-[90] bg-black bg-opacity-80">
           <div className="flex flex-col p-8 rounded-lg">
-            <button className="relative px-20 py-2 text-white border-2 border-gray-50/20 bg-transparent mb-10 sm:mb-4" onClick={handleMenuClick}>
+            <button className="relative px-20 py-2 text-white border-2 border-gray-50/20 bg-transparent mb-6 sm:mb-4" onClick={handleMenuClick}>
               <div className="corner-button"></div>
               <div className="corner-button"></div>
               <div className="corner-button"></div>
               <div className="corner-button"></div>
               Our Services
             </button>
-            <button className="relative px-20 py-2 text-white border-2 border-gray-50/20 bg-transparent mb-10 sm:mb-4" onClick={handleMenuClick}>
+            <button className="relative px-20 py-2 text-white border-2 border-gray-50/20 bg-transparent mb-6 sm:mb-4" onClick={handleMenuClick}>
               <div className="corner-button"></div>
               <div className="corner-button"></div>
               <div className="corner-button"></div>
@@ -211,11 +211,10 @@ const Home = () => {
             </button>
           </div>
         </div>
-      )}
+      )} */}
 
       {!generateForm && (
-
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute dotted-circles inset-0 flex items-center justify-center">
           <motion.div
             className="w-[15rem] h-[15rem] sm:w-[70rem] sm:h-[70rem] rounded-full opacity-40 border-4 border-[#b6401e] border-dotted absolute"
             animate={{ rotate: 360 }}

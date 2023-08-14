@@ -7,7 +7,7 @@ import FaceComponent from '../face/faceComponents';
 
 function FadeText() {
   const messages = [
-    'Hello User',
+    'Hello, User',
     'We’re about to go on a journey of creating personalized artistic QR codes for your personal and business needs.',  
     'We hope you love it'
   ];
@@ -31,7 +31,7 @@ function FadeText() {
   }, [messageIndex, messages.length]);
 
   return (
-    <div className="fading-text text-center sm:w-full px-3 mt-[-7rem] sm:px-32  mx-auto sm:text-left">
+    <div className="fading-text text-center sm:w-full px-3 mt-[-7rem] sm:px-80    mx-auto sm:text-left">
       {messages.map((message, index) => (
         <CSSTransition
           key={index}
@@ -39,12 +39,13 @@ function FadeText() {
           timeout={5000}
           classNames="fade"
         >
-          <p className={`z-20 text-white text-center text-2xl sm:text-4xl ${messageIndex === index ? 'visible' : 'hidden'}`}>{message}</p>
+          <p className={`z-20 text-white text-center text-2xl sm:text-4xl ${messageIndex === index ? 'visible' : 'hidden'} ${index === 1 ? 'text-base sm:text-2xl' : ''}`}>{message}</p>
         </CSSTransition>
       ))}
       <FaceComponent />
     </div>
   );
 }
+
 
 export default FadeText;

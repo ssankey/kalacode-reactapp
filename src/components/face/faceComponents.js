@@ -3,19 +3,19 @@ import './styles.css'
 
 const FaceComponent = () => {
   const [frameIndex, setFrameIndex] = useState(0);
-  const totalFrames = 89;
-  const frameDuration = 50;
+  const totalFrames = 95;
+  const frameDuration = 90;
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [preloadedImages, setPreloadedImages] = useState([]);
 
   useEffect(() => {
     const preloadImages = async () => {
       const images = [];
-      const totalFrames = 86; // Total number of frames including 00000 to 00085
+      const totalFrames = 95; // Total number of frames including 00000 to 00085
   
       for (let i = 0; i < totalFrames; i++) {
         const imageNumber = i.toString().padStart(5, '0');
-        const imageUrl = `/Comp/Comp 3_${imageNumber}.png`;
+        const imageUrl = `/png/Comp 3_${imageNumber}-min.png`;
         const image = new Image();
         image.src = imageUrl;
         images.push(image);

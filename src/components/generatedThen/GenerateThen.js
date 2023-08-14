@@ -41,10 +41,10 @@ const GenerateThen = () => {
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-3xl sm:text-6xl uppercase">
                 <span className="block">PAST</span>
-                <span className="block ml-4 sm:ml-6">CREATIONS</span>
+                <span className="block ml-4 sm:ml-6">GENERATIONS</span>
               </h2>
               <button
-                className="relative generated-then-button outline outline-offset-2 mt-10 outline-gray-400/50 outline-1 mr-16 bg-gray-300 text-black border text-center pl-10 pr-14 py-2  block"
+                className="relative generated-then-button outline outline-offset-2 mt-10 outline-gray-400/50 outline-1 mr-10 bg-gray-300 text-black border text-center pl-10 pr-14 py-2  block"
                 onClick={handleModalClick}
               >
                 <div className="corner-button-home"></div>
@@ -70,7 +70,7 @@ const GenerateThen = () => {
                 transition={{ duration: 0.5, delay: index * 0.2 }} // Add delay based on the index of the image
               >
                 <div
-                  className="relative w-full sm:w-80 p-10 outline-2 bg-black/40 mx-auto h-auto cursor-pointer "
+                  className="relative w-full sm:w-80 p-10 bg-black/40 mx-auto h-auto cursor-pointer"
                   onClick={() => openModal(image)}
                 >
                   <div className="corner-border"></div> {/* Top left corner border */}
@@ -80,15 +80,17 @@ const GenerateThen = () => {
                   <img
                     src={image.src}
                     alt={image.description}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full outline z-50 outline-white/20 outline-offset-8 sm:opacity-50 hover:opacity-100 transition duration-300 ease-in-out object-cover"
                   />
+                  <p className="text-white text-center pt-5">SNOWY CITY</p>
                 </div>
+
               </motion.div>
             ))}
           </div>
 
           {selectedImage && (
-            <div className="fixed image-modal inset-0 mt-10 flex items-center justify-center bg-black bg-opacity-10 z-50">
+            <div className="fixed image-modal inset-0  flex items-center justify-center bg-black bg-opacity-10 z-50">
               <div className="bg-black bg-opacity-80 w-[90%] px-10 sm:w-[60rem] flex justify-center items-center flex-col relative">
                 <div className="corner-border-modal"></div> {/* Top left corner border */}
                 <div className="corner-border-modal"></div> {/* Top right corner border */}
@@ -113,21 +115,24 @@ const GenerateThen = () => {
                     />
                   </svg>
                 </button>
-
+                <div>
+                  <p className='text-white text-xl mt-8'>PROMPT</p>
+                </div>
                 <div className="relative mt-10">
-                  <div className="corner-border"></div> {/* Top left corner border */}
-                  <div className="corner-border"></div> {/* Top right corner border */}
-                  <div className="corner-border"></div> {/* Bottom left corner border */}
-                  <div className="corner-border"></div> {/* Bottom right corner border */}
+                  <div className="corner-border-pop"></div> {/* Top left corner border */}
+                  <div className="corner-border-pop"></div> {/* Top right corner border */}
+                  <div className="corner-border-pop"></div> {/* Bottom left corner border */}
+                  <div className="corner-border-pop"></div> {/* Bottom right corner border */}
                   <img
                     id="qrCodeImage"
                     src={selectedImage.src}
                     alt="qrcode"
-                    className="sm:h-80 sm:w-80 max-w-full h-auto bg-none"
+                    className="sm:h-80 relative outline outline-2 outline-white/10 outline-offset-4 sm:w-80 max-w-full h-auto bg-none"
                   />
-                  <div className="absolute inset-0 outline outline-2 outline-white/10 outline-offset-4"></div>
+                  
                 </div>
-                <div className="mt-8 w-full sm:w-[80%] md:w-[80%] lg:w-[80%] xl:w-[80%] 2xl:w-[80%] sm:py-4 text-center">
+            
+                <div className="mt-5 w-full sm:w-[80%] md:w-[80%] lg:w-[80%] xl:w-[80%] 2xl:w-[80%]  text-center">
                   <textarea
                     id="prompt"
                     rows={5}
@@ -155,12 +160,12 @@ const GenerateThen = () => {
       {showGenerate && (
         <div className='flex items-center justify-center h-full'>
           <div className='w-full'>
-          <Generate imageDescription={selectedImage?.description || ''} />
+            <Generate imageDescription={selectedImage?.description || ''} />
           </div>
         </div>
       )}
 
-     
+
     </div>
   );
 };

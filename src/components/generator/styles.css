@@ -1,12 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
-@font-face {
-  font-family: 'CustomFont';
-  src: url('../../assets/Maison-Neue-Font-Families/Maison-Neue-Extended/MaisonNeueExtended-Thin.otf') format('opentype');
-}
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;500&display=swap');
+
 
 
 .modal-text h1,.form-text h1,.form-text p, .form-text label,.form-text input,.form-text button,.form-text textarea{
-  font-family: 'Lato', sans-serif;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.corner-button-generator {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid rgb(255, 255, 255); /* Adjust the border properties as needed */
+}
+
+.corner-button-generator:nth-child(1) {
+  top: -7px;
+  left: -7px;
+  border-bottom-width: 0;
+  border-right-width: 0;
+}
+
+
+.corner-button-generator:nth-child(2) {
+  top: -7px;
+  right: -7px;
+  border-bottom-width: 0;
+  border-left-width: 0;
+}
+
+
+.corner-button-generator:nth-child(3) {
+  bottom: -7px;
+  left: -7px;
+  border-top-width: 0;
+  border-right-width: 0;
+}
+
+.corner-button-generator:nth-child(4) {
+  bottom: -7px;
+  right: -7px;
+  border-top-width: 0;
+  border-left-width: 0;
 }
 
 .corner-button {
@@ -50,9 +85,9 @@
 
 .corner-border {
   position: absolute;
-  width: 60px; /* Adjust the length of the corner borders as needed */
-  height: 60px; /* Adjust the length of the corner borders as needed */
-  border: 2px solid rgba(149, 149, 149, 0.56); /* Adjust the border properties as needed */
+  width: 20px; /* Adjust the length of the corner borders as needed */
+  height: 20px; /* Adjust the length of the corner borders as needed */
+  border: 2px solid rgb(255, 255, 255); /* Adjust the border properties as needed */
 }
 
 
@@ -79,6 +114,43 @@
 }
 
 .corner-border:nth-child(4) {
+  bottom: -2px;
+  right: -2px;
+  border-top-width: 0;
+  border-left-width: 0;
+}
+
+
+.corner-border-generated{
+  position: absolute;
+  width: 20px; /* Adjust the length of the corner borders as needed */
+  height: 20px; /* Adjust the length of the corner borders as needed */
+  border: 2px solid rgb(255, 255, 255); /* Adjust the border properties as needed */
+}
+
+
+.corner-border-generated:nth-child(1) {
+  top: -2px;
+  left: -2px;
+  border-bottom-width: 0;
+  border-right-width: 0;
+}
+
+.corner-border-generated:nth-child(2) {
+  top: -2px;
+  right: -2px;
+  border-bottom-width: 0;
+  border-left-width: 0;
+}
+
+.corner-border-generated:nth-child(3) {
+  bottom: -2px;
+  left: -2px;
+  border-top-width: 0;
+  border-right-width: 0;
+}
+
+.corner-border-generated:nth-child(4) {
   bottom: -2px;
   right: -2px;
   border-top-width: 0;

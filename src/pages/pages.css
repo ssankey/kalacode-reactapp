@@ -9,6 +9,15 @@ h1,p{
   font-weight: normal;
 } 
 
+.dotted-circles{
+  display: flex;
+}
+@media (max-width: 600px) {
+  .dotted-circles {
+    display: none; /* Hide the text for screens smaller than 600px */
+  }
+}
+
 .button-content {
   padding: 0 10px; /* Adjust the padding as needed */
 }
