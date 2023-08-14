@@ -52,7 +52,7 @@ const GenerateThen = () => {
                 <div className="corner-button-home"></div>
                 <div className="corner-button-home"></div>
                 <span className="button-content">GENERATE NOW</span>
-                <div className='absolute top-0 left-[11.3rem] py-4 w-12 h-full bg-[#D7998C] text-white flex justify-center items-center '><MdOutlineKeyboardArrowRight /></div>
+                <div className='absolute top-0 left-[11.3rem] py-4 w-12 h-full bg-[#2a2988] text-white flex justify-center items-center '><MdOutlineKeyboardArrowRight /></div>
               </button>
             </div>
             <p className="sm:ml-8 py-5 sm:pl-0">
