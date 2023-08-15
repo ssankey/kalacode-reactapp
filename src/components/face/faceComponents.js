@@ -55,6 +55,11 @@ const FaceComponent = () => {
 
   const backgroundImage = `url(${preloadedImages[frameIndex]?.src})`;
 
+  // Render the component only when images are loaded
+  if (!imagesLoaded) {
+    return null;
+  }
+
   return (
     <div className="absolute flex justify-center items-center w-full sm:h-auto sm:w-[30%] mx-auto inset-0">
       <div

@@ -46,12 +46,7 @@ const Home = () => {
 
   return (
     <div className='h-screen w-screen relative'>
-      <button
-        className="absolute bg-black/30 border-white/70 rounded-full z-[1000] top-[50%] left-4 p-2 text-white"
-        onClick={handleBackButtonClick}
-      >
-        <MdOutlineKeyboardArrowLeft size={24} /> {/* Circular button with React icon */}
-      </button>
+   
       <ReactNebula
         config={{
           starsCount: 1000,
@@ -62,10 +57,8 @@ const Home = () => {
       />
       <div className='relative'>
         <div className='flex justify-between items-center px-4 sm:px-12 py-4 pt-5'>
-          <div className='sm:w-auto w-full'>
-            <Link to={'/'}>
-              <img src={logo} className="sm:w-[8rem] w-[5rem]" alt="logo" />
-            </Link>
+          <div className='sm:w-auto z-50 w-full'>
+              <img src={logo}     onClick={handleBackButtonClick} className="sm:w-[8rem] w-[5rem] cursor-pointer" alt="logo" />
           </div>
           {/* <div
             className='sm:text-right text-white z-[100] cursor-pointer'
