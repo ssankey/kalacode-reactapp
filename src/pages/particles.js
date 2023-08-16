@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
@@ -85,13 +84,12 @@ const MyThreeJSComponent = () => {
     }
 
     return () => {
-      if (mountRef.current) {
+      if (mountRef.current && renderer.current && renderer.current.domElement) {
         mountRef.current.removeChild(renderer.current.domElement);
       }
       document.body.removeEventListener('pointermove', onPointerMove);
       window.removeEventListener('resize', onWindowResize);
     };
-    
   }, []);
 
   return <div ref={mountRef} />;

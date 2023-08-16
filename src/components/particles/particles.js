@@ -3,124 +3,90 @@ import * as THREE from 'three';
 
 const ParticleAnimation = () => {
   const containerRef = useRef(null);
+  let container;
+  let camera, scene, renderer;
+  let particles = [];
+  let mouseX = 10;
+  let mouseY = 10;
 
   useEffect(() => {
-    let SEPARATION = 100;
-    let AMOUNTX = 100;
-    let AMOUNTY = 190;
+    const SEPARATION = 100;
+    const AMOUNTX = 40;
+    const AMOUNTY = 80;
 
-    let container;
-    let camera, scene, renderer;
+    camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 1, 10000);
+    camera.position.z = 600;
 
-    let particles = [];
-    let count = 0;
+    scene = new THREE.Scene();
 
-    let mouseX = 85;
-    let mouseY = -342;
+    const geometry = new THREE.PlaneGeometry(8, 8);
+    const material = new THREE.MeshBasicMaterial({ color: 0xb6401e });
 
-    let windowHalfX = window.innerWidth / 2;
-    let windowHalfY = window.innerHeight / 2;
+    for (let ix = 0; ix < AMOUNTX; ix++) {
+      for (let iy = 0; iy < AMOUNTY; iy++) {
+        const particle = new THREE.Mesh(geometry, material);
+        particle.position.x = ix * SEPARATION - (AMOUNTX * SEPARATION) / 2;
+        particle.position.z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
 
-    const init = () => {
-      container = containerRef.current;
+        // Add initial animation to particles
+        particle.position.y = Math.sin((ix * AMOUNTY + iy) * 0.1) * 50;
 
-      camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 1, 10000);
-      camera.position.z = 600;
-
-      scene = new THREE.Scene();
-
-      particles = new Array();
-
-      const geometry = new THREE.BoxGeometry(9, 9, 9);
-      const material = new THREE.MeshBasicMaterial({ color: 0xb6401e });
-
-      let i = 0;
-
-      for (let ix = 0; ix < AMOUNTX; ix++) {
-        for (let iy = 0; iy < AMOUNTY; iy++) {
-          const particle = new THREE.Mesh(geometry, material);
-          particle.position.x = ix * SEPARATION - (AMOUNTX * SEPARATION) / 2;
-          particle.position.z = iy * SEPARATION - (AMOUNTY * SEPARATION) / 2;
-          scene.add(particle);
-          particles.push(particle);
-        }
+        scene.add(particle);
+        particles.push(particle);
       }
+    }
 
-      renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      container.appendChild(renderer.domElement);
+    renderer = new THREE.WebGLRenderer({ antialias: false });
+    renderer.setSize(window.innerWidth, window.innerHeight);
 
-      document.addEventListener('mousemove', onDocumentMouseMove, false);
-      document.addEventListener('touchstart', onDocumentTouchStart, false);
-      document.addEventListener('touchmove', onDocumentTouchMove, false);
+    if (containerRef.current) {
+      containerRef.current.appendChild(renderer.domElement);
+    }
 
-      window.addEventListener('resize', onWindowResize, false);
-    };
+    document.addEventListener('mousemove', onDocumentMouseMove, false);
 
-    const onWindowResize = () => {
-      windowHalfX = window.innerWidth / 2;
-      windowHalfY = window.innerHeight / 2;
+    window.addEventListener('resize', onWindowResize, false);
 
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    };
-
-    const onDocumentMouseMove = (event) => {
-      mouseX = event.clientX - windowHalfX;
-      mouseY = event.clientY - windowHalfY;
-    };
-
-    const onDocumentTouchStart = (event) => {
-      if (event.touches.length === 1) {
-        event.preventDefault();
-        mouseX = event.touches[0].pageX - windowHalfX;
-        mouseY = event.touches[0].pageY - windowHalfY;
-      }
-    };
-
-    const onDocumentTouchMove = (event) => {
-      if (event.touches.length === 1) {
-        event.preventDefault();
-        mouseX = event.touches[0].pageX - windowHalfX;
-        mouseY = event.touches[0].pageY - windowHalfY;
-      }
-    };
-
-    const animate = () => {
-      requestAnimationFrame(animate);
-      render();
-    };
-
-    const render = () => {
-      camera.position.x += (mouseX - camera.position.x) * 0.05;
-      camera.position.y += (-mouseY - camera.position.y) * 0.05;
-      camera.lookAt(scene.position);
-
-      let i = 0;
-
-      for (let ix = 0; ix < AMOUNTX; ix++) {
-        for (let iy = 0; iy < AMOUNTY; iy++) {
-          const particle = particles[i++];
-          particle.position.y = Math.sin((ix + count) * 0.5) * 20 + Math.sin((iy + count) * 0.5) * 100;
-        }
-      }
-
-      renderer.render(scene, camera);
-
-      count += 0.5;
-    };
-
-    init();
     animate();
 
     return () => {
-      container.removeChild(renderer.domElement);
+      if (containerRef.current) {
+        containerRef.current.removeChild(renderer.domElement);
+      }
     };
   }, []);
 
-  return <div ref={containerRef}/>;
+  const onWindowResize = () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  };
+
+  const onDocumentMouseMove = (event) => {
+    mouseX = (event.clientX - window.innerWidth / 2) * 0.1;
+    mouseY = (event.clientY - window.innerHeight / 2) * 0.1;
+  };
+
+  const animate = () => {
+    requestAnimationFrame(animate);
+    render();
+  };
+
+  const render = () => {
+    camera.position.x += (mouseX - camera.position.x) * 0.05;
+    camera.position.y += (-mouseY - camera.position.y) * 0.05;
+    camera.lookAt(scene.position);
+
+    for (let i = 0; i < particles.length; i++) {
+      const particle = particles[i];
+      particle.position.y = Math.sin((i + mouseX) * 0.5) * 20 + Math.sin((i + mouseY) * 0.5) * 100;
+    }
+
+    renderer.render(scene, camera);
+  };
+
+  return <div ref={containerRef} />;
 };
 
 export default ParticleAnimation;
