@@ -4,7 +4,7 @@ import './styles.css'
 const FaceComponent = () => {
   const [frameIndex, setFrameIndex] = useState(0);
   const totalFrames = 95;
-  const frameDuration = 90;
+  const frameDuration = 100;
   const [imagesLoaded, setImagesLoaded] = useState(false);
   const [preloadedImages, setPreloadedImages] = useState([]);
 

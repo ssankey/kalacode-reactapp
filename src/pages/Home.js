@@ -1,4 +1,4 @@
-import React, {  useState } from 'react';
+import React, { useState } from 'react';
 import { ReactNebula } from "@flodlc/nebula";
 import logo from '../assets/Group 80.png'
 import { motion } from 'framer-motion';
@@ -8,6 +8,7 @@ import './pages.css'
 import Generate from '../components/generator/Generator';
 import FadeText from '../components/fading/FadingText';
 import GenerateThen from '../components/generatedThen/GenerateThen';
+import MyThreeJSComponent from './particles';
 
 const Home = () => {
   const [showGenerateSection, setShowGenerateSection] = useState(true);
@@ -46,21 +47,15 @@ const Home = () => {
 
   return (
     <div className='h-screen w-screen relative'>
-   
-      <ReactNebula
-        config={{
-          starsCount: 1000,
-          starsRotationSpeed: 3,
-          nebulasIntensity: 10
-        }}
-        className='absolute inset-0 -z-50'
-      />
-      <div className='relative'>
-        <div className='flex justify-between items-center px-4 sm:px-12 py-4 pt-5'>
-          <div className='sm:w-auto z-50 w-full'>
-              <img src={logo}     onClick={handleBackButtonClick} className="sm:w-[8rem] w-[5rem] cursor-pointer" alt="logo" />
-          </div>
-          {/* <div
+
+      <div className='absolute inset-0'>
+        <MyThreeJSComponent />
+      </div>
+      <div className='flex justify-between z-50 items-center px-4 sm:px-12 py-4 pt-5'>
+        <div className='sm:w-auto z-50 w-full'>
+          <img src={logo} className="sm:w-[8rem] bg-none w-[5rem] cursor-pointer" alt="logo" />
+        </div>
+        {/* <div
             className='sm:text-right text-white z-[100] cursor-pointer'
             onClick={handleMenuClick}
           >
@@ -81,7 +76,6 @@ const Home = () => {
               'MENU'
             )}
           </div> */}
-        </div>
       </div>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -127,17 +121,18 @@ const Home = () => {
                 transition={{ duration: 0.6, delay: 1 }}
                 exit={{ opacity: 0, y: -20 }}
               >
-                <button className='relative outline outline-offset-2 outline-gray-400/50 outline-1 bg-gray-300 text-black border text-center pl-10 pr-14 py-2 mb-8 sm:mb-3 group'
-                  onClick={handleGenerateClick}
-                >
-                  <div className="corner-button-home"></div>
-                  <div className="corner-button-home"></div>
-                  <div className="corner-button-home"></div>
-                  <div className="corner-button-home"></div>
-                  <span className="button-content transition-colors  ">GENERATE NOW</span>
-                  <div className='absolute top-0 left-[11.5rem] py-4  duration-500 w-12 h-full group-hover:bg-[#b6401e]/40 text-white flex justify-center items-center '><MdOutlineKeyboardArrowRight /></div>
-                </button>
-
+                <Link to={'/generate'}>
+                  <button className='relative outline outline-offset-2 outline-gray-400/50 outline-1 bg-gray-300 text-black border text-center pl-10 pr-14 py-2 mb-8 sm:mb-3 group'
+                  // onClick={handleGenerateClick}
+                  >
+                    <div className="corner-button-home"></div>
+                    <div className="corner-button-home"></div>
+                    <div className="corner-button-home"></div>
+                    <div className="corner-button-home"></div>
+                    <span className="button-content transition-colors  ">GENERATE NOW</span>
+                    <div className='absolute top-0 left-[11.5rem] py-4  duration-500 w-12 h-full group-hover:bg-[#b6401e]/40 text-white flex justify-center items-center '><MdOutlineKeyboardArrowRight /></div>
+                  </button>
+                </Link>
 
               </motion.div>
               <motion.div
@@ -146,13 +141,13 @@ const Home = () => {
                 transition={{ duration: 0.6, delay: 1.5 }}
                 exit={{ opacity: 0, y: -20 }}
               >
-                <Link>
-                  <button onClick={generatedThen} className='relative outline outline-offset-2 border-none outline-gray-400/50 text-white mt-[-5px] hover:bg-white/10 border text-center px-12 mb-1 py-2 sm:ml-10 transition duration-500 ease-in-out'>
-                    <div className="corner-button-home"></div>
-                    <div className="corner-button-home "></div>
-                    <div className="corner-button-home"></div>
-                    <div className="corner-button-home"></div>
-                    GENERATED THEN
+                <Link to={'/generated-then'}>
+                  <button className=' overflow-hidden btn relative button  text-white mt-[-5px] hover:bg-white/10 border text-center px-12 mb-1 py-2 sm:ml-10 transition duration-500 ease-in-out'>
+                    <span className="btn-content">
+                      <span className="btn-inner-content">
+                        <span>Generated Then</span>
+                      </span>
+                    </span>
                   </button>
                 </Link>
               </motion.div>
@@ -161,19 +156,9 @@ const Home = () => {
 
         )}
       </div>
-      {showTextSequence && (
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }} // Exit animation properties
-          transition={{ duration: 0.6 }}
-          className='flex items-center justify-center h-full'
-        >
-          <div className="text-center z-50 text-black p-4">
-            <FadeText />
-          </div>
-        </motion.div>
-      )}
+      {/* {showTextSequence && (
+       
+      )} */}
       {/* {showMenu && (
         <div className="absolute sm:fixed inset-0 flex items-center justify-center z-[90] bg-black bg-opacity-80">
           <div className="flex flex-col p-8 rounded-lg">
@@ -223,7 +208,7 @@ const Home = () => {
           ></motion.div>
         </div>
       )}
-      {generateForm && (
+      {/* {generateForm && (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -237,7 +222,7 @@ const Home = () => {
             </div>
           </div>
         </motion.div>
-      )}
+      )} */}
 
 
       {showGeneratedThen && (

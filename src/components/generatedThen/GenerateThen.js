@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReactNebula } from "@flodlc/nebula";
 import { Link } from 'react-router-dom';
 import { MdClose, MdOutlineKeyboardArrowRight } from 'react-icons/md';
@@ -7,6 +7,10 @@ import images from '../../pages/data';
 import Generate from '../generator/Generator';
 import './GeneratedThen.css';
 import ParticleCanvas from '../particles/particles';
+import logo from '../../assets/Group 80.png'
+import MyThreeJSComponent from '../particles/particles';
+import ParticleAnimation from '../particles/particles';
+
 
 const GenerateThen = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -32,35 +36,85 @@ const GenerateThen = () => {
     setShowGenerate(true);
   };
 
+
+  useEffect(() => {
+    const letterSpans = document.querySelectorAll('.fade-in-letter');
+    letterSpans.forEach((letter, index) => {
+      setTimeout(() => {
+        letter.style.animationDelay = `${index * 0.15}s`;
+      }, 0);
+    });
+  }, []);
+
+
   return (
     <div className='h-screen generated-then w-screen'>
+      <div className='absolute inset-0 -z-50'>
+        <ParticleAnimation/>
+      </div>
+      <div className='flex justify-between z-50 items-center px-4 sm:px-12 py-4 pt-5'>
+        <div className='sm:w-auto z-50 w-full'>
+          <Link to={'/'} >
+            <img src={logo} className="sm:w-[8rem] bg-none w-[5rem] cursor-pointer" alt="logo" />
+          </Link>
+        </div>
+        {/* <div
+            className='sm:text-right text-white z-[100] cursor-pointer'
+            onClick={handleMenuClick}
+          >
+            {showMenu ? (
+              <div className="relative sm:left-6 p-5">
+                <div className="corner-button-home"></div>
+                <div className="corner-button-home"></div>
+                <div className="corner-button-home"></div>
+                <div className="corner-button-home"></div>
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2  -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center">
+                  <div className="w-12 h-12 border-2 border-white/20 flex items-center justify-center">
+                    <MdClose size={24} color="white" />
+                  </div>
+                </div>
 
+              </div>
+            ) : (
+              'MENU'
+            )}
+          </div> */}
+      </div>
       {showGallery && (
         <>
           <div className="relative text-white sm:ml-28 pl-4 sm:pl-0">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-3xl sm:text-6xl uppercase">
-                <span className="block">PAST</span>
-                <span className="block ml-4 sm:ml-6">GENERATIONS</span>
+              <h2 className="text-3xl sm:text-6xl uppercase fade-in-letters">
+                <span className="block">
+                  <span className="fade-in-letter">P</span>
+                  <span className="fade-in-letter">A</span>
+                  <span className="fade-in-letter">S</span>
+                  <span className="fade-in-letter">T</span>
+                </span>
+                <br/>
+                <span className="block ml-4 sm:ml-16">
+                  <span className="fade-in-letter">G</span>
+                  <span className="fade-in-letter">E</span>
+                  <span className="fade-in-letter">N</span>
+                  <span className="fade-in-letter">E</span>
+                  <span className="fade-in-letter">R</span>
+                  <span className="fade-in-letter">A</span>
+                  <span className="fade-in-letter">T</span>
+                  <span className="fade-in-letter">I</span>
+                  <span className="fade-in-letter">O</span>
+                  <span className="fade-in-letter">N</span>
+                  <span className="fade-in-letter">S</span>
+                </span>
               </h2>
-              <button
-                className="relative generated-then-button outline outline-offset-2 mt-10 outline-gray-400/50 outline-1 mr-10 bg-gray-300 text-black border text-center pl-10 pr-14 py-2  block"
-                onClick={handleModalClick}
-              >
-                <div className="corner-button-home"></div>
-                <div className="corner-button-home"></div>
-                <div className="corner-button-home"></div>
-                <div className="corner-button-home"></div>
-                <span className="button-content">GENERATE NOW</span>
-                <div className='absolute top-0 left-[11.3rem] py-4 w-12 h-full bg-[#2a2988] text-white flex justify-center items-center '><MdOutlineKeyboardArrowRight /></div>
-              </button>
+              {/* ... Other code ... */}
             </div>
-            <p className="sm:ml-8 py-5 sm:pl-0">
+
+            <p className="sm:ml-16 py-5 sm:pl-0">
               Check out our creations and remix them using the associated prompts.<br /> Click on the images to get the full prompt.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-4 mb-20 sm:ml-36 justify-center sm:justify-end p-10">
+          <div className="flex flex-wrap gap-4 mb-20 sm:ml-24 justify-center p-10">
             {images.map((image, index) => (
               <motion.div
                 key={image.id}
@@ -70,7 +124,7 @@ const GenerateThen = () => {
                 transition={{ duration: 0.5, delay: index * 0.2 }} // Add delay based on the index of the image
               >
                 <div
-                  className="relative w-full sm:w-80 p-10 bg-black/40 mx-auto h-auto cursor-pointer"
+                  className="relative w-full sm:w-96    p-10  mx-auto h-[30rem] flex items-center justify-center bg-gray-400/10 flex-col cursor-pointer hover:bg-white/30 hover:bg-opacity-20 transition duration-300 ease-in-out"
                   onClick={() => openModal(image)}
                 >
                   <div className="corner-border"></div> {/* Top left corner border */}
@@ -80,10 +134,11 @@ const GenerateThen = () => {
                   <img
                     src={image.src}
                     alt={image.description}
-                    className="w-full h-full outline z-50 outline-white/20 outline-offset-8 sm:opacity-50 hover:opacity-100 transition duration-300 ease-in-out object-cover"
+                    className="w-52  h-52 outline z-50 outline-white/20 outline-offset-8 sm:opacity-50 hover:opacity-100 transition duration-300 ease-in-out object-cover"
                   />
                   <p className="text-white text-center pt-5">SNOWY CITY</p>
                 </div>
+
 
               </motion.div>
             ))}
@@ -129,9 +184,9 @@ const GenerateThen = () => {
                     alt="qrcode"
                     className="sm:h-80 relative outline outline-2 outline-white/10 outline-offset-4 sm:w-80 max-w-full h-auto bg-none"
                   />
-                  
+
                 </div>
-            
+
                 <div className="mt-5 w-full sm:w-[80%] md:w-[80%] lg:w-[80%] xl:w-[80%] 2xl:w-[80%]  text-center">
                   <textarea
                     id="prompt"
